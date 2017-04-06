@@ -1,0 +1,121 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#page-wrapper {
+    background-image: url('https://media.giphy.com/media/3ohzdZVeJl7PiTCN8c/giphy.gif');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    &::before {
+        content: '';
+        background-image: url('../img/pixel.png');
+        background-repeat: repeat;
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+    }
+}
+
+.tv {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5000;
+
+    &::before,
+    &::after {
+        content: '';
+        background-image: url('../img/tv_texture_tv.png');
+        background-position: top left;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        display: block;
+        position: absolute;
+        top: 0;
+        // right: 0;
+        // bottom: 0;
+        left: 0;
+        width: 59%;
+        height: 50%;
+    }
+
+
+    &::after {
+        left: auto;
+        right: 0;
+        transform: scaleX(-1);
+    }
+
+    &--bottom {
+        transform: scaleY(-1)
+    }
+}
+
+.countdown {
+    font-family: courier;
+    font-size: 10rem;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    opacity: 0.8;
+}
+
+.message {
+    margin-top: 30px;
+    font-family: courier;
+    font-size: 10rem;
+    font-weight: bold;
+    color: red;
+    text-align: center;
+    opacity: 0.8;
+    animation: blink 1200ms ease-out infinite;
+}
+
+#audio {
+    display: none;
+    visibility: hidden;
+    position: absolute;
+    left: -10000px;
+}
+
+#video {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 0;
+}
+
+@keyframes blink {
+    from {
+        opacity: 0.8;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
