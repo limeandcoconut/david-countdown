@@ -30,6 +30,7 @@ body {
         width: 100%;
         height: 100%;
         z-index: 1000;
+        pointer-events: none;
     }
 }
 
@@ -42,6 +43,7 @@ body {
     width: 100%;
     height: 100%;
     z-index: 5000;
+    pointer-events: none;
 
     &::before,
     &::after {
@@ -90,6 +92,23 @@ body {
     text-align: center;
     opacity: 0.8;
     animation: blink 1200ms ease-out infinite;
+}
+
+.btn {
+    background-color: red;
+    display: none;
+    padding: 20px;
+    border: none;
+    outline: none;
+    font-family: courier;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+
+    @media screen and (max-width: 1000px) {
+        display: inline-block;
+    }
 }
 
 #audio {

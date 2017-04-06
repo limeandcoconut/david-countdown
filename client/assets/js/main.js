@@ -32,13 +32,31 @@ docReady(function() {
         )
 
         let intervalId = setInterval(() => {
-            console.log(new Date('06 Apr 2017 17:00:00 PDT') - new Date() < 0)
+            // console.log(new Date('06 Apr 2017 17:00:00 PDT') - new Date() < 0)
             if (new Date('06 Apr 2017 17:00:00 PDT') - new Date() < 0) {
                 clearInterval(intervalId)
                 clearInterval(countdownId)
                 location.reload()
             }
         }, 1000)
+
+        if (new Date('06 Apr 2017 16:00:00 PDT') - new Date() > 0) {
+
+            let intervalId2 = setInterval(() => {
+                if (new Date('06 Apr 2017 16:00:00 PDT') - new Date() < 0) {
+                    clearInterval(intervalId2)
+                    location.reload()
+                }
+            }, 1000)
+        } else {
+            document.getElementsByClassName('btn')[0].addEventListener('click', () => {
+                document.getElementById('audio').play()
+            })
+        }
+    } else {
+        document.getElementsByClassName('btn')[0].addEventListener('click', () => {
+            document.getElementById('audio').play()
+        })
     }
 
 })
