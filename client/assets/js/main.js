@@ -5,7 +5,7 @@ var docReady = require('doc-ready')
 console.log(countdown)
 docReady(function() {
 
-    if (new Date('07 Apr 2017 17:00:00 PST') - new Date() > 0) {
+    if (new Date('07 Apr 2017 16:00:00 PST') - new Date() > 0) {
 
         function format(num) {
             num = String(num)
@@ -19,21 +19,26 @@ docReady(function() {
         let stamp = ''
         let element = document.getElementById('countdown')
 
-        console.log(units)
-
-        countdown(
-            new Date('07 Apr 2017 17:00:00 PST'),
+        let countdownId = countdown(
+            new Date('07 Apr 2017 16:00:00 PST'),
             (ts) => {
                 units.forEach((unit) => {
                     return stamp += format(ts[unit]) + ':'
                 })
                 element.textContent = stamp.slice(0, -1)
-                // console.log(element)
-                // console.log(stamp)
                 stamp = ''
             },
             countdown.HOURS | countdown.MINUTES | countdown.SECONDS | countdown.MILLISECONDS
         )
+
+        let intervalId = setInterval(() => {
+            console.log(new Date('07 Apr 2017 16:00:00 PST') - new Date() < 0)
+            if (new Date('07 Apr 2017 16:00:00 PST') - new Date() < 0) {
+                clearInterval(intervalId)
+                clearInterval(countdownId)
+                location.reload()
+            }
+        }, 1000)
     }
 
 })
